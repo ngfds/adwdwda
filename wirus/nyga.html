@@ -109,5 +109,41 @@
         // Dodajmy nasłuchiwanie na kliknięcie przycisku
         document.getElementById("openPopupButton").addEventListener("click", playSoundAndCreatePopup);
     </script>
+    <script>
+    function createPopup() {
+        var newWindow = window.open("", "_blank", "width=200,height=100");
+
+        if (newWindow) {
+            var leftPosition = Math.floor(Math.random() * (screen.width - 200));
+            var topPosition = Math.floor(Math.random() * (screen.height - 100));
+
+            var speedX = (Math.random() - 0.5) * 100;
+            var speedY = (Math.random() - 0.5) * 100;
+
+            function move() {
+                leftPosition += speedX;
+                topPosition += speedY;
+
+                if (leftPosition < 0 || leftPosition > (screen.width - 200)) {
+                    speedX = -speedX;
+                }
+
+                if (topPosition < 0 || topPosition > (screen.height - 100)) {
+                    speedY = -speedY;
+                }
+
+                newWindow.moveTo(leftPosition, topPosition);
+                requestAnimationFrame(move);
+            }
+
+            // Dodajemy treść do okna popup
+            newWindow.document.write('<html><head><title>Free Robux Popup</title></head><body style="margin:0;text-align:center;font-size:20px;">' +
+                'Free Robux' +
+                '</body></html>');
+
+            move();
+        }
+    }
+
 </body>
 </html>
