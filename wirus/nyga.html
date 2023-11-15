@@ -19,11 +19,21 @@
         }
 
         #gifContainer {
+            position: relative;
             width: 100%;
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        #freeRobuxText {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: #e74c3c;
         }
 
         #openPopupButton {
@@ -44,6 +54,7 @@
 
     <div id="gifContainer">
         <img src="roblox-robux.gif" alt="Roblox Robux GIF" style="width:100%; height:100%;">
+        <div id="freeRobuxText">Free Robux</div>
     </div>
 
     <audio id="popupSound">
@@ -59,7 +70,7 @@
             var popupSound = document.getElementById("popupSound");
             popupSound.play();
 
-            setInterval(function () {
+            setTimeout(function () {
                 var newWindow = window.open("", "_blank", "width=300,height=200");
 
                 if (newWindow) {
@@ -92,7 +103,7 @@
 
                     move();
                 }
-            }, 500);  // Dodajemy nowe okno co 0.5 sekundy
+            }, 1000);  // Oczekaj 1 sekundę przed otwarciem okna
         }
 
         // Dodajmy nasłuchiwanie na kliknięcie przycisku
